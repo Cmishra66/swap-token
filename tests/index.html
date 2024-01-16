@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Swap</title>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+</head>
+<body>
+
+<h1>Token Swap</h1>
+
+<label for="amountA">Enter amount of TokenA to swap:</label>
+<input type="number" id="amountA" placeholder="Amount of TokenA">
+<button onclick="swapAForB()">Swap A for B</button>
+
+<label for="amountB">Enter amount of TokenB to swap:</label>
+<input type="number" id="amountB" placeholder="Amount of TokenB">
+<button onclick="swapBForA()">Swap B for A</button>
+
+<p id="swapStatus"></p>
+
+<script>
+  // Replace with the deployed contract address and ABI
+  const contractAddress = 'YOUR_CONTRACT_ADDRESS';
+  const contractABI = [[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_tokenA",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_tokenB",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_exchangeRate",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "target",
+				"type": "address"
+			}
+		],
+		"name": "AddressEmptyCode",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "AddressInsufficientBalance",
+		"type": "error"
+	},
+	{
+		"inputs": [],
+		"name": "FailedInnerCall",
+		"type": "error"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "token",
+				"type": "address"
+			}
+		],
+		"name": "SafeERC20FailedOperation",
+		"type": "error"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amountA",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amountB",
+				"type": "uint256"
+			}
+		],
+		"name": "Swap",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "exchangeRate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_exchangeRate",
+				"type": "uint256"
+			}
+		],
+		"name": "setExchangeRate",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amountA",
+				"type": "uint256"
+			}
+		],
+		"name": "swapAForB",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amountB",
+				"type": "uint256"
+			}
+		],
+		"name": "swapBForA",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tokenA",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tokenB",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]]; // Replace with your contract's ABI
+
+  // Replace with your Ethereum address
+  const userAddress = '0x1AB988fB3F546E7cda20E8c209400aad73EC2dB9';
+
+  let web3;
+
+  async function initWeb3() {
+    if (window.ethereum) {
+      web3 = new Web3(window.ethereum);
+      try {
+        await window.ethereum.enable();
+      } catch (error) {
+        console.error("User denied account access");
+      }
+    } else if (window.web3) {
+      web3 = new Web3(window.web3.currentProvider);
+    } else {
+      console.error("No web3 provider detected. Please install MetaMask.");
+    }
+  }
+
+  async function swapAForB() {
+    const amountA = document.getElementById("amountA").value;
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+    try {
+      const result = await contract.methods.swapAForB(amountA).send({ from: userAddress });
+      console.log(result);
+      document.getElementById("swapStatus").innerText = `Swap successful. Transaction hash: ${result.transactionHash}`;
+    } catch (error) {
+      console.error(error);
+      document.getElementById("swapStatus").innerText = `Swap failed. Check the console for details.`;
+    }
+  }
+
+  async function swapBForA() {
+    const amountB = document.getElementById("amountB").value;
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+    try {
+      const result = await contract.methods.swapBForA(amountB).send({ from: userAddress });
+      console.log(result);
+      document.getElementById("swapStatus").innerText = `Swap successful. Transaction hash: ${result.transactionHash}`;
+    } catch (error) {
+      console.error(error);
+      document.getElementById("swapStatus").innerText = `Swap failed. Check the console for details.`;
+    }
+  }
+
+  window.onload = async function () {
+    await initWeb3();
+  };
+</script>
+
+</body>
+</html>
