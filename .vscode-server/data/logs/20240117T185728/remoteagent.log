@@ -9,3 +9,10 @@
 2024-01-17 18:57:29.015 [info] [127.0.0.1][a5d739eb][ExtensionHostConnection] New connection established.
 2024-01-17 18:57:29.163 [info] [127.0.0.1][4d196596][ManagementConnection] New connection established.
 2024-01-17 18:57:30.747 [info] [127.0.0.1][a5d739eb][ExtensionHostConnection] <125> Launched Extension Host Process.
+2024-01-17 19:11:40.611 [info] Getting Manifest... github.vscode-github-actions
+2024-01-17 19:11:41.066 [info] Installing extension: github.vscode-github-actions
+2024-01-17 19:11:42.650 [warning] Extension signature verification failed with error 'ENOENT': github.vscode-github-actions
+2024-01-17 19:11:42.857 [info] Extracted extension to file:///home/kiit/.vscode-server/extensions/github.vscode-github-actions-0.26.2: github.vscode-github-actions
+2024-01-17 19:11:42.863 [info] Renamed to /home/kiit/.vscode-server/extensions/github.vscode-github-actions-0.26.2
+2024-01-17 19:11:42.864 [info] Extracting extension completed. github.vscode-github-actions
+2024-01-17 19:11:42.869 [info] Extension installed successfully: github.vscode-github-actions

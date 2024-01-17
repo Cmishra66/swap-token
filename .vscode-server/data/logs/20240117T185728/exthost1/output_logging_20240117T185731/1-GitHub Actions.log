@@ -1,0 +1,22 @@
+Activating GitHub Actions extension...
+
+Cannot fetch github context
+Error: Cannot fetch github context
+	at vt (/home/kiit/.vscode-server/extensions/github.vscode-github-actions-0.26.2/dist/extension-node.js:2:1444927)
+	at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+	at async /home/kiit/.vscode-server/extensions/github.vscode-github-actions-0.26.2/dist/extension-node.js:2:1626834
+	at async Os (/home/kiit/.vscode-server/extensions/github.vscode-github-actions-0.26.2/dist/extension-node.js:2:1625906)
+	at async l.n (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/out/vs/workbench/api/node/extensionHostProcess.js:140:6255)
+	at async l.m (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/out/vs/workbench/api/node/extensionHostProcess.js:140:6218)
+	at async l (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/out/vs/workbench/api/node/extensionHostProcess.js:140:5675)
+
+Cannot fetch github context
+Error: Cannot fetch github context
+	at vt (/home/kiit/.vscode-server/extensions/github.vscode-github-actions-0.26.2/dist/extension-node.js:2:1444927)
+	at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+	at async Bt (/home/kiit/.vscode-server/extensions/github.vscode-github-actions-0.26.2/dist/extension-node.js:2:1445257)
+	at async Os (/home/kiit/.vscode-server/extensions/github.vscode-github-actions-0.26.2/dist/extension-node.js:2:1637593)
+	at async l.n (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/out/vs/workbench/api/node/extensionHostProcess.js:140:6255)
+	at async l.m (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/out/vs/workbench/api/node/extensionHostProcess.js:140:6218)
+	at async l (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/out/vs/workbench/api/node/extensionHostProcess.js:140:5675)
+...initialized

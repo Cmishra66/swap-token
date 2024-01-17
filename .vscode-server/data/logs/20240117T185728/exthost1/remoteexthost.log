@@ -87,3 +87,28 @@
 	at ChildProcess.<anonymous> (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/extensions/git/dist/main.js:2:990935)
 	at ChildProcess.emit (node:events:525:35)
 	at ChildProcess._handle.onexit (node:internal/child_process:291:12)
+2024-01-17 19:11:33.980 [error] Error: Git error
+	at ChildProcess.<anonymous> (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/extensions/git/dist/main.js:2:990935)
+	at ChildProcess.emit (node:events:525:35)
+	at ChildProcess._handle.onexit (node:internal/child_process:291:12)
+2024-01-17 19:11:33.980 [error] Error: Git error
+	at ChildProcess.<anonymous> (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/extensions/git/dist/main.js:2:990935)
+	at ChildProcess.emit (node:events:525:35)
+	at ChildProcess._handle.onexit (node:internal/child_process:291:12)
+2024-01-17 19:11:34.981 [error] Error: Git error
+	at ChildProcess.<anonymous> (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/extensions/git/dist/main.js:2:990935)
+	at ChildProcess.emit (node:events:525:35)
+	at ChildProcess._handle.onexit (node:internal/child_process:291:12)
+2024-01-17 19:11:34.982 [error] Error: Git error
+	at ChildProcess.<anonymous> (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/extensions/git/dist/main.js:2:990935)
+	at ChildProcess.emit (node:events:525:35)
+	at ChildProcess._handle.onexit (node:internal/child_process:291:12)
+2024-01-17 19:11:43.056 [info] ExtensionService#_doActivateExtension github.vscode-github-actions, startup: false, activationEvent: 'onLanguage:github-actions-workflow'
+2024-01-17 19:12:06.060 [error] Error: Git error
+	at ChildProcess.<anonymous> (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/extensions/git/dist/main.js:2:990935)
+	at ChildProcess.emit (node:events:525:35)
+	at ChildProcess._handle.onexit (node:internal/child_process:291:12)
+2024-01-17 19:12:07.061 [error] Error: Git error
+	at ChildProcess.<anonymous> (/home/kiit/.vscode-server/bin/0ee08df0cf4527e40edc9aa28f4b5bd38bbff2b2/extensions/git/dist/main.js:2:990935)
+	at ChildProcess.emit (node:events:525:35)
+	at ChildProcess._handle.onexit (node:internal/child_process:291:12)
